@@ -49,6 +49,45 @@ test.describe('Navigation', () => {
             ).toBeVisible();
         });
 
+    test('NAV003b navigation displays correctly at desktop viewport sizes',
+        async ({ page }) => {
+
+            await page.setViewportSize({ width: 1280, height: 800 });
+            await homePage(page).openHomePage();
+
+            await expect(
+                homePage(page).logo()
+            ).toBeVisible();
+
+            await expect(
+                homePage(page).explore()
+            ).toBeVisible();
+
+            await expect(
+                homePage(page).features()
+            ).toBeVisible();
+
+            await expect(
+                homePage(page).otcDesk()
+            ).toBeVisible();
+
+            await expect(
+                homePage(page).company()
+            ).toBeVisible();
+
+            await expect(
+                homePage(page).support()
+            ).toBeVisible();
+
+            await expect(
+                homePage(page).globe()
+            ).toBeVisible();
+
+            await expect(
+                homePage(page).download()
+            ).toBeVisible();
+        });
+
     test('NAV004 sign in visible',
         async ({ page }) => {
 
@@ -64,6 +103,24 @@ test.describe('Navigation', () => {
             await expect(
                 homePage(page)
                     .signUp()
+            ).toBeVisible();
+        });
+
+    test('NAV006 globe visible',
+        async ({ page }) => {
+
+            await expect(
+                homePage(page)
+                    .globe()
+            ).toBeVisible();
+        });
+
+    test('NAV007 QR visible',
+        async ({ page }) => {
+
+            await expect(
+                homePage(page)
+                    .download()
             ).toBeVisible();
         });
 
@@ -176,6 +233,27 @@ test.describe('Navigation', () => {
             await expect(
                 popup.getByRole('button', { name: 'Log In' })
             ).toBeVisible();
+
+            await expect(
+                popup.getByLabel('Email address*')
+            ).toBeVisible();
+
+            await expect(
+                popup.getByLabel('Password*')
+            ).toBeVisible();
+
+            await expect(
+                popup.getByRole('link', { name: 'Forgot Password?' })
+            ).toHaveAttribute('href', '/forgot-password');
+
+            const signUpLink = popup.locator('a', { hasText: 'Sign up' }).first();
+
+            await expect(signUpLink).toBeVisible();
+            await expect(signUpLink).toHaveAttribute('rel', 'noreferrer nopener');
+
+            await expect(
+                popup.getByRole('button', { name: 'Sign up' })
+            ).toBeVisible();
         });
 
     test('should navigate to sign up page',
@@ -194,8 +272,80 @@ test.describe('Navigation', () => {
             await expect(
                 popup.getByRole('heading', { name: 'Create account' })
             ).toBeVisible();
+
+            await expect(
+                popup.getByLabel('Email address*')
+            ).toBeVisible();
+
+            await expect(
+                popup.getByLabel('Password*')
+            ).toBeVisible();
+
+            await expect(
+                popup.getByRole('button', { name: 'Next' })
+            ).toBeVisible();
+
+            await expect(
+                popup.getByRole('link', { name: 'Privacy Policy' })
+            ).toHaveAttribute('href', 'https://mb.io/en-AE/about/privacy-policy-gcc');
+
+            await expect(
+                popup.getByRole('link', { name: 'Privacy Policy' })
+            ).toHaveAttribute('target', '_blank');
+
+            await expect(
+                popup.getByRole('link', { name: 'Privacy Policy' })
+            ).toHaveAttribute('rel', 'noopener noreferrer');
+
+            await expect(
+                popup.getByRole('link', { name: 'Log In' })
+            ).toHaveAttribute('href', '/login');
+
+            await expect(
+                popup.getByRole('button', { name: 'Redeem Referral' })
+            ).toBeVisible();
+
         });
 
+    test('should open globe dropdown menu',
+        async ({ page }) => {
+
+            await homePage(page)
+                .globe()
+                .click();
+
+            const countries = [
+                'English',
+                'Español',
+                'Français',
+                'Português',
+                '繁體中文',
+                'العربية',
+                'Italiano',
+                'Русский',
+                '简体中文',
+                'Deutsch',
+                'Türkçe'
+            ];
+
+            for (const country of countries) {
+                await expect(page.getByText(country)).toBeVisible();
+            }
+        });
+
+    test('should show QR menu',
+        async ({ page }) => {
+
+            await homePage(page)
+                .download()
+                .click();
+
+            await expect(
+                page.getByText('Scan the QR code to download the app')
+            ).toBeVisible();
+
+            await expect(
+                page.locator('[role="dialog"] image[href="/icons/apple-touch-icon.png"]')
+            ).toBeVisible();
+        });
 });
-
-

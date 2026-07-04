@@ -31,5 +31,11 @@ export const homePage = (page: Page) => ({
         page.getByRole('link', { name: 'Sign in', exact: true }).first(),
 
     signUp: () =>
-        page.getByRole('link', { name: 'Sign up', exact: true }).first()
+        page.getByRole('link', { name: 'Sign up', exact: true }).first(),
+
+    globe: () =>
+        page.locator("xpath=(//div[@type='button'])[1]"),
+
+    download: () =>
+        page.locator('[data-slot="popover-trigger"]').nth(1)
 });
