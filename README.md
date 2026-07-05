@@ -24,6 +24,14 @@ npx playwright install
 npx playwright test
 ```
 
+> By default Playwright uses 2 workers for this repository. To increase the worker count, add `--workers={number of workers}` to the command.
+
+### Run all tests with more workers
+
+```bash
+npx playwright test --workers=3
+```
+
 ### Run a single test file
 
 ```bash
@@ -54,3 +62,5 @@ npx playwright show-report
 - Tests use `https://mb.io/en-AE` as the base URL.
 - The project is configured to run headed browsers by default.
 - CI runs with retries enabled and a single worker.
+- For Task 2, a separate file named `Task2.md` has been created.
+- The Google Play Store download app icon is currently missing from the target page.
