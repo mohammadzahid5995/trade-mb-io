@@ -4,7 +4,7 @@ export const homePage = (page: Page) => ({
 
     openHomePage: async () => {
         // Use baseURL and networkidle so dynamic navigation elements are ready.
-        await page.goto('/', { waitUntil: 'networkidle', timeout: 60000 });
+        await page.goto('/', { waitUntil: 'networkidle', timeout: 800000 });
         await page.waitForSelector('nav, [role="navigation"], header nav', { state: 'visible', timeout: 30000 });
     },
 

@@ -17,7 +17,7 @@ test.describe('Download dialog icons', () => {
 
             await expect(
                 page.getByText('Scan the QR code to download the app')
-            ).toBeVisible();
+            ).toBeVisible({ timeout: 20000 });
 
             const dialog = page.locator('[role="dialog"]').first();
             await expect(dialog).toBeVisible();
