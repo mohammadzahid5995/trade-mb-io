@@ -1,9 +1,11 @@
-import { Page } from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
 
 export const homePage = (page: Page) => ({
 
     openHomePage: async () => {
-        await page.goto('https://mb.io/en-AE');
+        // Use baseURL and networkidle so dynamic navigation elements are ready.
+        await page.goto('/', { waitUntil: 'networkidle', timeout: 60000 });
+        await page.waitForSelector('nav, [role="navigation"], header nav', { state: 'visible', timeout: 30000 });
     },
 
     logo: () =>
@@ -34,8 +36,16 @@ export const homePage = (page: Page) => ({
         page.getByRole('link', { name: 'Sign up', exact: true }).first(),
 
     globe: () =>
-        page.locator("xpath=(//div[@type='button'])[1]"),
+        page.locator('[data-slot="popover-trigger"][aria-haspopup="dialog"]').filter({
+            has: page.locator('svg')
+        }).first(),
 
     download: () =>
-        page.locator('[data-slot="popover-trigger"]').nth(1)
+        page.locator('[data-slot="popover-trigger"]').nth(1),
+
+    banner: (): Locator =>
+        page.locator('header, [role="banner"], .banner, [data-test="banner"]').first(),
+
+    main: (): Locator =>
+        page.locator('main, [role="main"], #main, [data-test="main"]').first()
 });

@@ -28,8 +28,15 @@ export default defineConfig({
     /* Run tests with headed browser. */
     headless: false,
 
+    /* Set a stable viewport for desktop tests. */
+    viewport: { width: 1280, height: 800 },
+
     /* Base URL to use in actions like `await page.goto('')`. */
     baseURL: 'https://mb.io/en-AE',
+
+    /* Increase action/navigation timeouts for slower cross-browser runs. */
+    actionTimeout: 20000,
+    navigationTimeout: 45000,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -42,25 +49,15 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
 
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    },
 
     /* Test against branded browsers. */
     // {
