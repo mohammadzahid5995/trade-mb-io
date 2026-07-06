@@ -1,0 +1,753 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: edgeCases\broken-links.spec.ts >> Broken Links >> NAV-BROKEN-001 all navigation links have valid href attributes
+- Location: tests\edgeCases\broken-links.spec.ts:12:9
+
+# Error details
+
+```
+Test timeout of 30000ms exceeded while running "beforeEach" hook.
+```
+
+```
+Error: page.goto: Test timeout of 30000ms exceeded.
+Call log:
+  - navigating to "https://mb.io/", waiting until "networkidle"
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic:
+    - img "warm background"
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link "Home" [ref=e5]:
+          - /url: /
+          - img [ref=e7]
+        - navigation "Main" [ref=e12]:
+          - link "Explore" [ref=e13]:
+            - /url: /en-AE/explore
+          - link "Features" [ref=e14]:
+            - /url: /en-AE/features
+          - link "OTC Desk" [ref=e15]:
+            - /url: /en-AE/features/otc-desk
+          - link "Company" [ref=e16]:
+            - /url: /en-AE/company
+          - link "Support" [ref=e17]:
+            - /url: /en-AE/support
+          - link "$MBG" [ref=e18]:
+            - /url: https://token.multibankgroup.com/en
+      - generic [ref=e19]:
+        - img [ref=e21] [cursor=pointer]
+        - img [ref=e24] [cursor=pointer]
+        - link "Sign in" [ref=e26]:
+          - /url: https://trade.mb.io/login
+        - link "Sign up" [ref=e27]:
+          - /url: https://trade.mb.io/register
+  - generic [ref=e28]:
+    - generic [ref=e29]:
+      - generic [ref=e30]:
+        - heading "Crypto for everyone" [level=3] [ref=e31]
+        - paragraph [ref=e32]: Simple, secure and speedy. Our platform offers everything from beginner crypto trading to the most advanced features on the market.
+      - generic [ref=e33]:
+        - link "Download the app" [ref=e34]:
+          - /url: https://mbio.go.link/6OW91
+        - link "Open an account" [ref=e35]:
+          - /url: https://trade.mb.io/register
+      - generic [ref=e36]:
+        - img "Mobile Dashboard" [ref=e38]
+        - generic [ref=e39]:
+          - generic [ref=e40]:
+            - generic [ref=e41]: The fastest way to trade
+            - generic [ref=e42]: Trade crypto instantly on mb.io with ultra-fast 40-nanosecond execution and support for 9M+ trades per second. A simple, powerful platform for all levels.
+            - 'img "Accepted payment methods: Visa, Mastercard, SWIFT"'
+          - separator [ref=e43]
+          - generic [ref=e44]:
+            - generic [ref=e45]: Credit card & Bank transfers
+            - generic [ref=e46]: Deposit USD or EUR via credit card or bank transfer on mb.io, then easily buy crypto and trade FIAT/CRYPTO pairs on our exchange.
+            - 'img "Accepted payment methods: Visa, Mastercard, SWIFT" [ref=e47]':
+              - img "Visa" [ref=e48]
+              - img "Swift" [ref=e49]
+              - img "Mastercard" [ref=e50]
+    - generic [ref=e51]:
+      - generic [ref=e52]:
+        - heading "Securely build your portfolio" [level=3] [ref=e53]
+        - paragraph [ref=e54]: Diversify your crypto portfolio on a highly regulated platform with segregated funds, advanced security, and user-friendly tools to support informed investing.
+        - link "Start Portfolio" [ref=e56]:
+          - /url: https://trade.mb.io/register
+      - region [ref=e57]:
+        - generic [ref=e59]:
+          - group [ref=e60]:
+            - link "MultiBank Group MultiBank Group $0.17 0.00%" [ref=e62]:
+              - /url: /explore/MBG
+              - img "MultiBank Group" [ref=e63]
+              - generic [ref=e64]: MultiBank Group
+              - generic [ref=e65]:
+                - generic [ref=e67]: $0.17
+                - generic [ref=e69]:
+                  - img [ref=e70]
+                  - generic [ref=e72]: 0.00%
+          - group [ref=e73]:
+            - link "Bitcoin Bitcoin $63,675.16 1.10%" [ref=e75]:
+              - /url: /explore/BTC
+              - img "Bitcoin" [ref=e76]
+              - generic [ref=e77]: Bitcoin
+              - generic [ref=e78]:
+                - generic [ref=e80]: $63,675.16
+                - generic [ref=e82]:
+                  - img [ref=e83]
+                  - generic [ref=e85]: 1.10%
+          - group [ref=e86]:
+            - link "Ethereum Ethereum $1,786.85 0.81%" [ref=e88]:
+              - /url: /explore/ETH
+              - img "Ethereum" [ref=e89]
+              - generic [ref=e90]: Ethereum
+              - generic [ref=e91]:
+                - generic [ref=e93]: $1,786.85
+                - generic [ref=e95]:
+                  - img [ref=e96]
+                  - generic [ref=e98]: 0.81%
+          - group [ref=e99]:
+            - link "Solana Solana $81.52 0.29%" [ref=e101]:
+              - /url: /explore/SOL
+              - img "Solana" [ref=e102]
+              - generic [ref=e103]: Solana
+              - generic [ref=e104]:
+                - generic [ref=e106]: $81.52
+                - generic [ref=e108]:
+                  - img [ref=e109]
+                  - generic [ref=e111]: 0.29%
+          - group [ref=e112]:
+            - link "XRP XRP $1.16 0.72%" [ref=e114]:
+              - /url: /explore/XRP
+              - img "XRP" [ref=e115]
+              - generic [ref=e116]: XRP
+              - generic [ref=e117]:
+                - generic [ref=e119]: $1.16
+                - generic [ref=e121]:
+                  - img [ref=e122]
+                  - generic [ref=e124]: 0.72%
+          - group [ref=e125]:
+            - link "Cardano Cardano $0.19 1.61%" [ref=e127]:
+              - /url: /explore/ADA
+              - img "Cardano" [ref=e128]
+              - generic [ref=e129]: Cardano
+              - generic [ref=e130]:
+                - generic [ref=e132]: $0.19
+                - generic [ref=e134]:
+                  - img [ref=e135]
+                  - generic [ref=e137]: 1.61%
+          - group [ref=e138]:
+            - link "Dogecoin Dogecoin $0.08 0.82%" [ref=e140]:
+              - /url: /explore/DOGE
+              - img "Dogecoin" [ref=e141]
+              - generic [ref=e142]: Dogecoin
+              - generic [ref=e143]:
+                - generic [ref=e145]: $0.08
+                - generic [ref=e147]:
+                  - img [ref=e148]
+                  - generic [ref=e150]: 0.82%
+          - group [ref=e151]:
+            - link "TRON TRON $0.33 1.27%" [ref=e153]:
+              - /url: /explore/TRX
+              - img "TRON" [ref=e154]
+              - generic [ref=e155]: TRON
+              - generic [ref=e156]:
+                - generic [ref=e158]: $0.33
+                - generic [ref=e160]:
+                  - img [ref=e161]
+                  - generic [ref=e163]: 1.27%
+          - group [ref=e164]:
+            - link "Litecoin Litecoin $45.80 3.30%" [ref=e166]:
+              - /url: /explore/LTC
+              - img "Litecoin" [ref=e167]
+              - generic [ref=e168]: Litecoin
+              - generic [ref=e169]:
+                - generic [ref=e171]: $45.80
+                - generic [ref=e173]:
+                  - img [ref=e174]
+                  - generic [ref=e176]: 3.30%
+          - group [ref=e177]:
+            - generic:
+              - link "Avalanche Avalanche $6.93 0.22%":
+                - /url: /explore/AVAX
+                - img "Avalanche"
+                - generic: Avalanche
+                - generic:
+                  - generic:
+                    - generic: $6.93
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: 0.22%
+          - group [ref=e178]:
+            - generic:
+              - link "Bitcoin Cash Bitcoin Cash $244.00 2.95%":
+                - /url: /explore/BCH
+                - img "Bitcoin Cash"
+                - generic: Bitcoin Cash
+                - generic:
+                  - generic:
+                    - generic: $244.00
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: 2.95%
+          - group [ref=e179]:
+            - generic:
+              - link "Stellar Stellar $0.20 1.79%":
+                - /url: /explore/XLM
+                - img "Stellar"
+                - generic: Stellar
+                - generic:
+                  - generic:
+                    - generic: $0.20
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: 1.79%
+          - group [ref=e180]:
+            - generic:
+              - link "Chainlink Chainlink $8.07 1.39%":
+                - /url: /explore/LINK
+                - img "Chainlink"
+                - generic: Chainlink
+                - generic:
+                  - generic:
+                    - generic: $8.07
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: 1.39%
+          - group [ref=e181]:
+            - generic:
+              - link "Aave Aave $88.94 0.58%":
+                - /url: /explore/AAVE
+                - img "Aave"
+                - generic: Aave
+                - generic:
+                  - generic:
+                    - generic: $88.94
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: 0.58%
+          - group [ref=e182]:
+            - generic:
+              - link "Uniswap Uniswap $3.17 0.91%":
+                - /url: /explore/UNI
+                - img "Uniswap"
+                - generic: Uniswap
+                - generic:
+                  - generic:
+                    - generic: $3.17
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: 0.91%
+          - group [ref=e183]:
+            - generic:
+              - link "Shiba Inu Shiba Inu $0.00 0.00%":
+                - /url: /explore/SHIB
+                - img "Shiba Inu"
+                - generic: Shiba Inu
+                - generic:
+                  - generic:
+                    - generic: $0.00
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: 0.00%
+          - group [ref=e184]:
+            - generic:
+              - link "Ondo Ondo $0.33 0.36%":
+                - /url: /explore/ONDO
+                - img "Ondo"
+                - generic: Ondo
+                - generic:
+                  - generic:
+                    - generic: $0.33
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: 0.36%
+          - group [ref=e185]:
+            - generic:
+              - link "Polkadot Polkadot $0.88 0.12%":
+                - /url: /explore/DOT
+                - img "Polkadot"
+                - generic: Polkadot
+                - generic:
+                  - generic:
+                    - generic: $0.88
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: 0.12%
+          - group [ref=e186]:
+            - generic:
+              - link "Ethereum Classic Ethereum Classic $7.23 0.41%":
+                - /url: /explore/ETC
+                - img "Ethereum Classic"
+                - generic: Ethereum Classic
+                - generic:
+                  - generic:
+                    - generic: $7.23
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: 0.41%
+          - group [ref=e187]:
+            - generic:
+              - link "Polygon (prev. MATIC) Polygon (prev. MATIC) $0.07 1.09%":
+                - /url: /explore/POL
+                - img "Polygon (prev. MATIC)"
+                - generic: Polygon (prev. MATIC)
+                - generic:
+                  - generic:
+                    - generic: $0.07
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: 1.09%
+          - group [ref=e188]:
+            - generic:
+              - link "Lido DAO Lido DAO $0.27 0.48%":
+                - /url: /explore/LDO
+                - img "Lido DAO"
+                - generic: Lido DAO
+                - generic:
+                  - generic:
+                    - generic: $0.27
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: 0.48%
+          - group [ref=e189]:
+            - generic:
+              - link "Algorand Algorand $0.09 0.25%":
+                - /url: /explore/ALGO
+                - img "Algorand"
+                - generic: Algorand
+                - generic:
+                  - generic:
+                    - generic: $0.09
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: 0.25%
+          - group [ref=e190]:
+            - generic:
+              - link "The Sandbox The Sandbox $0.05 1.17%":
+                - /url: /explore/SAND
+                - img "The Sandbox"
+                - generic: The Sandbox
+                - generic:
+                  - generic:
+                    - generic: $0.05
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: 1.17%
+          - group [ref=e191]:
+            - generic:
+              - link "Decentraland Decentraland $0.07 2.06%":
+                - /url: /explore/MANA
+                - img "Decentraland"
+                - generic: Decentraland
+                - generic:
+                  - generic:
+                    - generic: $0.07
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: 2.06%
+          - group [ref=e192]:
+            - generic:
+              - link "Compound Compound $16.96 0.33%":
+                - /url: /explore/COMP
+                - img "Compound"
+                - generic: Compound
+                - generic:
+                  - generic:
+                    - generic: $16.96
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: 0.33%
+          - group [ref=e193]:
+            - generic:
+              - link "XDC Network XDC Network $0.03 2.31%":
+                - /url: /explore/XDC
+                - img "XDC Network"
+                - generic: XDC Network
+                - generic:
+                  - generic:
+                    - generic: $0.03
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: 2.31%
+    - generic [ref=e196]:
+      - generic [ref=e198]:
+        - heading "Unblemished. Unstoppable. United." [level=3] [ref=e199]
+        - paragraph [ref=e200]: Unbeaten in the ring. Unmatched in integrity. The discipline that defined Khabib now fuels the real-world-asset-backed $MBG Token.
+      - img "Mobile Dashboard" [ref=e202]
+    - generic [ref=e204]:
+      - generic [ref=e205]:
+        - heading "Smarter ways to trade and grow" [level=3] [ref=e206]
+        - link "View platform features" [ref=e208]:
+          - /url: https://trade.mb.io/login
+      - generic [ref=e209]:
+        - generic [ref=e211]:
+          - heading "From insight to action in seconds" [level=2] [ref=e212]
+          - paragraph [ref=e213]: Everything you need to understand an asset and trade it-all in one fast, intuitive experience.
+          - list [ref=e214]:
+            - listitem [ref=e215]:
+              - img "smart-ways-icon" [ref=e216]
+              - generic [ref=e217]: Clear price trends and sentiment
+            - listitem [ref=e218]:
+              - img "smart-ways-icon" [ref=e219]
+              - generic [ref=e220]: Clean, decision-ready asset view
+            - listitem [ref=e221]:
+              - img "smart-ways-icon" [ref=e222]
+              - generic [ref=e223]: Buy, sell, or convert in a few taps
+        - generic [ref=e225]:
+          - heading "Earn more. See more. Stay in control." [level=2] [ref=e226]
+          - paragraph [ref=e227]: A seamless experience that lets you earn yield and manage your portfolio effortlessly, all in one clear, real-time view.
+          - list [ref=e228]:
+            - listitem [ref=e229]:
+              - img "smart-ways-icon" [ref=e230]
+              - generic [ref=e231]: Transparent earning programs
+            - listitem [ref=e232]:
+              - img "smart-ways-icon" [ref=e233]
+              - generic [ref=e234]: Real-time balances and performance
+            - listitem [ref=e235]:
+              - img "smart-ways-icon" [ref=e236]
+              - generic [ref=e237]: Fast access to key portfolio actions
+        - img "Smart Ways Desktop Image" [ref=e239]
+      - generic [ref=e240]:
+        - generic [ref=e241]:
+          - img "Move funds effortlessly" [ref=e242]
+          - generic [ref=e243]:
+            - generic [ref=e244]: Move funds effortlessly
+            - generic [ref=e245]: Simple, secure flows that let you transfer assets with clarity and confidence.
+        - generic [ref=e246]:
+          - img "Stay informed" [ref=e247]
+          - generic [ref=e248]:
+            - generic [ref=e249]: Stay informed
+            - generic [ref=e250]: Timely alerts and updates that keep you connected to the market without distraction.
+        - generic [ref=e251]:
+          - img "Security of funds" [ref=e252]
+          - generic [ref=e253]:
+            - generic [ref=e254]: Security of funds
+            - generic [ref=e255]: Secure digital asset custody platform with multi-party computation (MPC).
+    - generic [ref=e257]:
+      - generic [ref=e258]:
+        - heading "Catch your next trade" [level=3] [ref=e259]
+        - paragraph [ref=e260]: Diversify your crypto portfolio on a highly regulated platform.
+        - link "Explore all assets" [ref=e262]:
+          - /url: /en-AE/explore
+      - generic [ref=e263]:
+        - generic [ref=e264]:
+          - heading "Top Gainers" [level=2] [ref=e265]
+          - generic [ref=e266]:
+            - link "Litecoin Litecoin $45.80 3.30%" [ref=e268]:
+              - /url: /explore/LTC
+              - generic [ref=e269]:
+                - img "Litecoin" [ref=e270]
+                - generic [ref=e271]: Litecoin
+              - generic [ref=e272]:
+                - generic [ref=e274]: $45.80
+                - generic [ref=e276]:
+                  - img [ref=e277]
+                  - generic [ref=e279]: 3.30%
+            - link "Bitcoin Cash Bitcoin Cash $244.00 2.95%" [ref=e281]:
+              - /url: /explore/BCH
+              - generic [ref=e282]:
+                - img "Bitcoin Cash" [ref=e283]
+                - generic [ref=e284]: Bitcoin Cash
+              - generic [ref=e285]:
+                - generic [ref=e287]: $244.00
+                - generic [ref=e289]:
+                  - img [ref=e290]
+                  - generic [ref=e292]: 2.95%
+            - link "TRON TRON $0.33 1.27%" [ref=e294]:
+              - /url: /explore/TRX
+              - generic [ref=e295]:
+                - img "TRON" [ref=e296]
+                - generic [ref=e297]: TRON
+              - generic [ref=e298]:
+                - generic [ref=e300]: $0.33
+                - generic [ref=e302]:
+                  - img [ref=e303]
+                  - generic [ref=e305]: 1.27%
+            - link "Chainlink Chainlink $8.07 1.39%" [ref=e307]:
+              - /url: /explore/LINK
+              - generic [ref=e308]:
+                - img "Chainlink" [ref=e309]
+                - generic [ref=e310]: Chainlink
+              - generic [ref=e311]:
+                - generic [ref=e313]: $8.07
+                - generic [ref=e315]:
+                  - img [ref=e316]
+                  - generic [ref=e318]: 1.39%
+            - link "Bitcoin Bitcoin $63,675.16 1.10%" [ref=e320]:
+              - /url: /explore/BTC
+              - generic [ref=e321]:
+                - img "Bitcoin" [ref=e322]
+                - generic [ref=e323]: Bitcoin
+              - generic [ref=e324]:
+                - generic [ref=e326]: $63,675.16
+                - generic [ref=e328]:
+                  - img [ref=e329]
+                  - generic [ref=e331]: 1.10%
+        - generic [ref=e332]:
+          - heading "Trending Now" [level=2] [ref=e333]
+          - generic [ref=e334]:
+            - link "MultiBank Group MultiBank Group $0.17 0.00%" [ref=e336]:
+              - /url: /explore/MBG
+              - generic [ref=e337]:
+                - img "MultiBank Group" [ref=e338]
+                - generic [ref=e339]: MultiBank Group
+              - generic [ref=e340]:
+                - generic [ref=e342]: $0.17
+                - generic [ref=e344]:
+                  - img [ref=e345]
+                  - generic [ref=e347]: 0.00%
+            - link "Bitcoin Bitcoin $63,675.16 1.10%" [ref=e349]:
+              - /url: /explore/BTC
+              - generic [ref=e350]:
+                - img "Bitcoin" [ref=e351]
+                - generic [ref=e352]: Bitcoin
+              - generic [ref=e353]:
+                - generic [ref=e355]: $63,675.16
+                - generic [ref=e357]:
+                  - img [ref=e358]
+                  - generic [ref=e360]: 1.10%
+            - link "Ethereum Ethereum $1,786.85 0.81%" [ref=e362]:
+              - /url: /explore/ETH
+              - generic [ref=e363]:
+                - img "Ethereum" [ref=e364]
+                - generic [ref=e365]: Ethereum
+              - generic [ref=e366]:
+                - generic [ref=e368]: $1,786.85
+                - generic [ref=e370]:
+                  - img [ref=e371]
+                  - generic [ref=e373]: 0.81%
+            - link "Solana Solana $81.52 0.29%" [ref=e375]:
+              - /url: /explore/SOL
+              - generic [ref=e376]:
+                - img "Solana" [ref=e377]
+                - generic [ref=e378]: Solana
+              - generic [ref=e379]:
+                - generic [ref=e381]: $81.52
+                - generic [ref=e383]:
+                  - img [ref=e384]
+                  - generic [ref=e386]: 0.29%
+            - link "XRP XRP $1.16 0.72%" [ref=e388]:
+              - /url: /explore/XRP
+              - generic [ref=e389]:
+                - img "XRP" [ref=e390]
+                - generic [ref=e391]: XRP
+              - generic [ref=e392]:
+                - generic [ref=e394]: $1.16
+                - generic [ref=e396]:
+                  - img [ref=e397]
+                  - generic [ref=e399]: 0.72%
+        - generic [ref=e400]:
+          - heading "Top Losers" [level=2] [ref=e401]
+          - generic [ref=e402]:
+            - link "Decentraland Decentraland $0.07 2.06%" [ref=e404]:
+              - /url: /explore/MANA
+              - generic [ref=e405]:
+                - img "Decentraland" [ref=e406]
+                - generic [ref=e407]: Decentraland
+              - generic [ref=e408]:
+                - generic [ref=e410]: $0.07
+                - generic [ref=e412]:
+                  - img [ref=e413]
+                  - generic [ref=e415]: 2.06%
+            - link "XDC Network XDC Network $0.03 2.31%" [ref=e417]:
+              - /url: /explore/XDC
+              - generic [ref=e418]:
+                - img "XDC Network" [ref=e419]
+                - generic [ref=e420]: XDC Network
+              - generic [ref=e421]:
+                - generic [ref=e423]: $0.03
+                - generic [ref=e425]:
+                  - img [ref=e426]
+                  - generic [ref=e428]: 2.31%
+            - link "Cardano Cardano $0.19 1.61%" [ref=e430]:
+              - /url: /explore/ADA
+              - generic [ref=e431]:
+                - img "Cardano" [ref=e432]
+                - generic [ref=e433]: Cardano
+              - generic [ref=e434]:
+                - generic [ref=e436]: $0.19
+                - generic [ref=e438]:
+                  - img [ref=e439]
+                  - generic [ref=e441]: 1.61%
+            - link "Stellar Stellar $0.20 1.79%" [ref=e443]:
+              - /url: /explore/XLM
+              - generic [ref=e444]:
+                - img "Stellar" [ref=e445]
+                - generic [ref=e446]: Stellar
+              - generic [ref=e447]:
+                - generic [ref=e449]: $0.20
+                - generic [ref=e451]:
+                  - img [ref=e452]
+                  - generic [ref=e454]: 1.79%
+            - link "Uniswap Uniswap $3.17 0.91%" [ref=e456]:
+              - /url: /explore/UNI
+              - generic [ref=e457]:
+                - img "Uniswap" [ref=e458]
+                - generic [ref=e459]: Uniswap
+              - generic [ref=e460]:
+                - generic [ref=e462]: $3.17
+                - generic [ref=e464]:
+                  - img [ref=e465]
+                  - generic [ref=e467]: 0.91%
+  - contentinfo [ref=e468]:
+    - generic [ref=e469]:
+      - navigation "Footer" [ref=e470]:
+        - generic [ref=e471]:
+          - link "Home" [ref=e472]:
+            - /url: /
+            - img [ref=e474]
+          - generic [ref=e479]:
+            - generic [ref=e480]: "Assured by:"
+            - link "Audited by Hacken - View security audit" [ref=e481]:
+              - /url: https://hacken.io/audits/mb-io/
+              - img [ref=e482]
+        - generic [ref=e484]:
+          - generic [ref=e485]:
+            - heading "Corporate" [level=3] [ref=e486]
+            - list [ref=e487]:
+              - listitem [ref=e488]:
+                - link "Disclaimer" [ref=e489]:
+                  - /url: /en-AE/about/disclaimer-gcc
+              - listitem [ref=e490]:
+                - link "Code of Conduct" [ref=e491]:
+                  - /url: /en-AE/about/code-of-conduct-gcc
+              - listitem [ref=e492]:
+                - link "Public Disclosure" [ref=e493]:
+                  - /url: /en-AE/about/public-disclosure-gcc
+              - listitem [ref=e494]:
+                - link "Acceptable Use Policy" [ref=e495]:
+                  - /url: /en-AE/about/acceptable-use-policy-gcc
+              - listitem [ref=e496]:
+                - link "Leadership Management" [ref=e497]:
+                  - /url: /en-AE/about/leadership-management-gcc
+          - generic [ref=e498]:
+            - heading "Privacy" [level=3] [ref=e499]
+            - list [ref=e500]:
+              - listitem [ref=e501]:
+                - link "Privacy Policy" [ref=e502]:
+                  - /url: /en-AE/about/privacy-policy-gcc
+              - listitem [ref=e503]:
+                - link "Cookie Policy" [ref=e504]:
+                  - /url: /en-AE/about/cookie-policy-gcc
+              - listitem [ref=e505]:
+                - link "Public Complaint Policy" [ref=e506]:
+                  - /url: /en-AE/about/complaint-policy-gcc
+              - listitem [ref=e507]:
+                - link "VA Standards" [ref=e508]:
+                  - /url: /en-AE/about/virtual-asset-standards-gcc
+          - generic [ref=e509]:
+            - heading "Compliance" [level=3] [ref=e510]
+            - list [ref=e511]:
+              - listitem [ref=e512]:
+                - link "Terms & Conditions" [ref=e513]:
+                  - /url: /en-AE/about/terms-conditions-gcc
+              - listitem [ref=e514]:
+                - link "Client Agreement" [ref=e515]:
+                  - /url: /en-AE/about/client-agreement-gcc
+              - listitem [ref=e516]:
+                - link "Anti Bribery Corruption Policy" [ref=e517]:
+                  - /url: /en-AE/about/anti-bribery-corruption-policy-gcc
+      - generic [ref=e518]:
+        - generic [ref=e519]:
+          - paragraph [ref=e520]: MBIO FZE (trading as MB.IO), is a Virtual Asset Service Provider (VASP) registered in the UAE and has received Operational Approval from the Virtual Asset Regulatory Authority (VARA) to provide Spot Broker-Dealer and Spot Exchange services.
+          - generic [ref=e521]:
+            - generic [ref=e522]: "We accept:"
+            - 'img "Accepted payment methods: Visa, Mastercard, UnionPay, SWIFT, SEPA, PIX, SPEI" [ref=e523]':
+              - img "Mastercard" [ref=e524]
+              - img "Visa" [ref=e525]
+              - img "Swift" [ref=e526]
+        - generic [ref=e527]:
+          - paragraph [ref=e528]: "Risk Warning: Cryptocurrency trading may not be suitable for everyone as there are risks involved, therefore, seek professional financial advice from a suitable and licensed financial advisor before investing. Any advice contained in this email is general advice only and has been prepared without taking into account your objectives, financial situation or needs. Before acting on any advice in this email, http://MB.IO recommends that you consider whether it is appropriate for your circumstances."
+          - paragraph [ref=e529]: We are authorised by the Virtual Assets Regulatory Authority ('VARA') with the VARA registration number VL/24/06/001 to carry on the financial services of (i) exchange; (ii) broker dealer; in and from DWTC. The complete statement of what we are authorised to carry on, which may change from time to time, can be found on our listing on the VARA Register.
+      - paragraph [ref=e530]: 2026 Copyright. All Rights Reserved. mb.io
+  - alert [ref=e531]
+  - iframe [ref=e532]:
+    
+```
+
+# Test source
+
+```ts
+  1  | import { Page, Locator } from '@playwright/test';
+  2  | 
+  3  | export const homePage = (page: Page) => ({
+  4  | 
+  5  |     openHomePage: async () => {
+  6  |         // Use baseURL and networkidle so dynamic navigation elements are ready.
+> 7  |         await page.goto('/', { waitUntil: 'networkidle', timeout: 800000 });
+     |                    ^ Error: page.goto: Test timeout of 30000ms exceeded.
+  8  |         await page.waitForSelector('nav, [role="navigation"], header nav', { state: 'visible', timeout: 30000 });
+  9  |     },
+  10 | 
+  11 |     logo: () =>
+  12 |         page.getByRole('link', { name: 'Home', exact: true }).first(),
+  13 | 
+  14 |     explore: () =>
+  15 |         page.getByRole('link', { name: 'Explore', exact: true }).first(),
+  16 | 
+  17 |     features: () =>
+  18 |         page.getByRole('link', { name: 'Features', exact: true }).first(),
+  19 | 
+  20 |     otcDesk: () =>
+  21 |         page.getByRole('link', { name: 'OTC Desk', exact: true }).first(),
+  22 | 
+  23 |     company: () =>
+  24 |         page.getByRole('link', { name: 'Company', exact: true }).first(),
+  25 | 
+  26 |     support: () =>
+  27 |         page.getByRole('link', { name: 'Support', exact: true }).first(),
+  28 | 
+  29 |     mbg: () =>
+  30 |         page.getByRole('link', { name: '$MBG', exact: true }).first(),
+  31 | 
+  32 |     signIn: () =>
+  33 |         page.getByRole('link', { name: 'Sign in', exact: true }).first(),
+  34 | 
+  35 |     signUp: () =>
+  36 |         page.getByRole('link', { name: 'Sign up', exact: true }).first(),
+  37 | 
+  38 |     globe: () =>
+  39 |         page.locator('[data-slot="popover-trigger"][aria-haspopup="dialog"]').filter({
+  40 |             has: page.locator('svg')
+  41 |         }).first(),
+  42 | 
+  43 |     download: () =>
+  44 |         page.locator('[data-slot="popover-trigger"]').nth(1),
+  45 | 
+  46 |     banner: (): Locator =>
+  47 |         page.locator('header, [role="banner"], .banner, [data-test="banner"]').first(),
+  48 | 
+  49 |     main: (): Locator =>
+  50 |         page.locator('main, [role="main"], #main, [data-test="main"]').first()
+  51 | });
+  52 | 
+```
